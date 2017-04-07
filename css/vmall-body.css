@@ -1,0 +1,179 @@
+.index-body {
+    width: 100%;
+}
+
+.section01 {
+    width: 1198px;
+    height: 97px;
+    border: 1px solid #dedede;
+    border-top: none;
+    margin: 0 auto;
+}
+
+.sec01-login {
+    float: left;
+    margin: 13px 0;
+}
+
+.sec01-login dt {
+    float: left;
+    margin-left: 22px;
+}
+
+.sec01-login dd {
+    float: left;
+    padding: 10px 20px 8px 20px;
+    border-right: 1px solid #dedede;
+}
+
+.sec01-text {
+    color: #a4a4a4;
+    height: 15px;
+    line-height: 15px;
+}
+
+.sec01-text a {
+    display: inline-block;
+    text-decoration: underline;
+    color: #3a3a3a;
+}
+
+.sec01-text span {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.sec01-desc {
+    width: 58px;
+    line-height: 18px;
+    height: 18px;
+    color: #ca151d;
+    border: 1px solid #ca151d;
+    float: left;
+    text-align: center;
+    margin-right: 14px;
+    margin-top: 7px;
+    cursor: pointer;
+}
+
+.sec01-desc:hover {
+    background: #ca151d;
+    color: #fff;
+}
+
+.sec01-img {
+    float: left;
+    padding: 25px 27px 16px 22px;
+    border-right: 1px solid #dedede;
+}
+
+.sec01-img dl {
+    float: left;
+    margin-right: 40px;
+}
+
+.sec01-img dl:last-of-type {
+    margin-right: 0;
+}
+
+.sec01-img dd {
+    color: #3a3a3a;
+    text-align: center;
+}
+
+.sec01-img a:hover {
+    color: #ca151d;
+}
+
+.sec01-img img {
+    display: inline-block;
+}
+
+.sec01-img-size {
+    width: 58px;
+    height: 40px;
+    text-align: center;
+}
+
+.sec01-notes {
+    width: 317px;
+    float: left;
+}
+
+.notes-list {
+    width: 100%;
+    height: 48px;
+    border-top: 1px solid #dedede;
+}
+
+.sec01-notes dl {
+    float: left;
+    margin-right: 30px;
+    padding-top: 17px;
+}
+
+.sec01-notes dl:first-of-type {
+    padding-left: 15px;
+}
+
+.sec01-notes dt {
+    float: left;
+}
+
+.sec01-notes dd {
+    float: left;
+}
+
+.all-notes a {
+    color: #3a3a3a;
+    padding-left: 8px;
+}
+
+/************************************/
+.notes-list {
+    width: 100%;
+    height: 48px;
+}
+
+.notes-list span {
+    color: #ca151d;
+    font-size: 13px;
+    height: 13px;
+    line-height: 13px;
+    font-weight: bold;
+    float: left;
+    padding: 19px 14px 0 13px;
+}
+
+.notes-list .notes-slider {
+    overflow: hidden;
+    height: 48px;
+    width: 248px;
+    float: left;
+    position: relative;
+    margin-top: 2px;
+}
+
+.all-list {
+    position: absolute;
+    top: -48px;
+    z-index: 20;
+}
+
+.all-list li {
+    width: 260px;
+}
+
+.all-list a {
+    color: #3a3a3a;
+    height: 48px;
+    line-height: 48px;
+}
+
+.all-list a:hover {
+    color: #ca151d;
+}
+
+.all-notes {
+    border-top: 1px solid #dedede;
+}

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/vmall.css">
+    <link rel="stylesheet" href="css/vmall-body.css">
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/slash.js"></script>
+</head>
+<body>
+
+        <header>
+            <!--top-->
+            <div class="options">
+                <div class="options-list">
+                    <ul class="options-ul1">
+                        <li><a href="#" class="options-first-a">华为官网</a></li>
+                        <li><a href="#">荣耀官网</a></li>
+                        <li id = "option-li">
+                            <a href="#">软件应用</a>
+                            <span class="arrow"></span>
+                            <ul class="option-li-list" style="display: none" id="option-li-list">
+                                <li class="option-list-a first-a"><a href="#">软件应用</a><span class="arrow-up arrow"></span></li>
+                                <li class="option-list-a"><a href="#">EMUI</a></li>
+                                <li class="option-list-a"><a href="#">应用市场</a></li>
+                                <li class="option-list-a"><a href="#">云服务</a></li>
+                                <li class="option-list-a"><a href="#">开发者联盟</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">花粉俱乐部</a></li>
+                        <li><a href="#">Select Region</a></li>
+                        <li><a href="#">V码(优购码)</a></li>
+                    </ul>
+
+                    <ul class="options-ul2">
+                        <li class="options-li2" id="options-li21">
+                            <a href="#" style="background: none">手机版</a>
+                            <span class="arrow"></span>
+                            <ul class="options-ul2-menu1" style="display: none">
+                                <li>
+                                    <p>手机版</p>
+                                    <p>专享无线特惠</p>
+                                </li>
+                                <li>
+                                    <p>微信公众号</p>
+                                    <p>微信扫码关注我们</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="options-li2" id="options-li22">
+                            <a href="#" id = "no-bk">更多精彩</a>
+                            <span class="arrow"></span>
+                            <ul class="options-ul2-menu2" style="display: none">
+                                <li><a href="#">帮助中心</a></li>
+                                <li><a href="#">数字音乐</a></li>
+                                <li><a href="#">爱旅</a></li>
+                                <li><a href="#">PC软件</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--middle-->
+            <div class="logo">
+                <div class="logo-head">
+                    <div class="logo-user clearfix">
+                        <form class="logo-form">
+                            <input type="text" class="logo-input"/>
+                            <input type="button" class="logo-search"/>
+                        </form>
+                        <div class="logo-input-text" style="display: block">
+                            <a href="#">HUAWEI P10</a>
+                            <a href="#">荣耀V9</a>
+                            <a href="#">荣耀8青春版</a>
+                        </div>
+
+                        <div class="logo-shop">
+                            <i index="item-0" id="shop-pointer"></i>
+                            <div class="logo-menu" style="display: none">
+                                <span class="clean-border"></span>
+                            </div>
+                        </div>
+
+                        <div class="logo-in">
+                            <a href="#">登陆</a>
+                            <a href="#">注册</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--bottom-->
+            <div class="items">
+                <div class="head-items">
+                    <div class="all-items">全部商品</div>
+                    <div class="all-items-list">
+                        <ul>
+                            <li><a href="index.html" id="item1">首页<span></span></a></li>
+                            <li><a href="#" id="item2">华为专区<span></span></a></li>
+                            <li><a href="#" id="item3">荣耀专区<span></span></a></li>
+                            <li><a href="#" id="item4">HUAWEI P10<span></span></a></li>
+                            <li><a href="#" id="item5">荣耀V9<span></span></a></li>
+                            <li><a href="#" id="item6">HUAWEI WATCH 2<span></span></a></li>
+                            <li><a href="#" id="item7">荣耀8青春版<span></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!--顶部banner部分-->
+        <div class="banner" id = "container">
+            <!--侧边展开栏-->
+            <div class="bg">
+            <div class="content">
+            <div class="aside">
+                <ul>
+                    <li class="aside-li">
+                        <div class="aside-desc">
+                            <div class="aside-bg"></div>
+                            <h3 class="aside-h">手机</h3>
+                            <p class="aside-p"><span>荣耀</span><span>HUAWEI P系列</span></p>
+                        </div>
+                        <div class="list" id="item-list1" style="display: none">
+                            <div class="list-head1"><span>浏览手机频道</span><a href="#">></a></div>
+                            <div class="list-body1">
+                                <a href="">荣耀</a>
+                                <a href="">HUAWEI P系列</a>
+                                <a href="">畅玩</a>
+                                <a href="">HUAWEI Mate系列</a>
+                                <a href="">HUAWEI nova系列</a>
+                                <a href="">华为 G系列</a>
+                                <a href="">华为畅享系列</a>
+                                <a href="">合约机</a>
+                            </div>
+                            <div class="list-img1">
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/p10.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>HUAWEI P10</p>
+                                        <p>￥4288</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/p10.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>HUAWEI P10</p>
+                                        <p>￥4288</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/p10.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>HUAWEI P10</p>
+                                        <p>￥4288</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/p10.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>HUAWEI P10</p>
+                                        <p>￥4288</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aside-li">
+                        <div class="aside-desc">
+                            <div class="aside-bg"></div>
+                            <h3 class="aside-h">笔记本&平板</h3>
+                            <p class="aside-p"><span>平板电脑</span><span>笔记本电脑</span></p>
+                        </div>
+                        <div class="list" id="item-list2" style="display: none">
+                            <div class="list-head1"><span>浏览笔记本 & 平板频道</span><a href="#">></a></div>
+                            <div class="list-body1">
+                                <a href="">平板电脑</a>
+                                <a href="">笔记本电脑</a>
+                            </div>
+                            <div class="list-img1">
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/M3.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为平板 M3</p>
+                                        <p>￥1888</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/M3.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为平板 M3</p>
+                                        <p>￥1888</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/M3.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为平板 M3</p>
+                                        <p>￥1888</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/M3.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为平板 M3</p>
+                                        <p>￥1888</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aside-li">
+                        <div class="aside-desc">
+                            <div class="aside-bg"></div>
+                            <h3 class="aside-h">穿戴</h3>
+                            <p class="aside-p"><span>手环</span><span>手表</span></p>
+                        </div>
+                        <div class="list" id="item-list3" style="display: none">
+                            <div class="list-head1"><span>浏览穿戴频道</span><a href="#">></a></div>
+                            <div class="list-body1">
+                                <a href="">手环</a>
+                                <a href="">手表</a>
+                            </div>
+                            <div class="list-img1">
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/box.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为Watch</p>
+                                        <p>￥3599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为Watch</p>
+                                        <p>￥3599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为Watch</p>
+                                        <p>￥3599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为Watch</p>
+                                        <p>￥3599</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aside-li">
+                        <div class="aside-desc">
+                            <div class="aside-bg"></div>
+                            <h3 class="aside-h">智能家居</h3>
+                            <p class="aside-p"><span>子母路由</span><span>电视盒子</span><span>路由器</span></p>
+                        </div>
+                        <div class="list" id="item-list4" style="display: none">
+                            <div class="list-head1"><span>浏览智能家居频道</span><a href="#">></a></div>
+                            <div class="list-body1">
+                                <a href="">子母路由</a>
+                                <a href="">电视盒子</a>
+                                <a href="">路由器</a>
+                                <a href="">电力猫</a>
+                                <a href="">随行Wifi</a>
+                                <a href="">HUAWEI HiLink生态产品</a>
+                            </div>
+                            <div class="list-img1">
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为路由 Q1</p>
+                                        <p>￥599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为路由 Q1</p>
+                                        <p>￥599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为路由 Q1</p>
+                                        <p>￥599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为路由 Q1</p>
+                                        <p>￥599</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aside-li">
+                        <div class="aside-desc">
+                            <div class="aside-bg"></div>
+                            <h3 class="aside-h">通用配件</h3>
+                            <p class="aside-p"><span>移动电源</span><span>耳机</span><span>音箱</span></p>
+                        </div>
+                        <div class="list" id="item-list5" style="display: none">
+                            <div class="list-head1"><span>浏览通用配件</span><a href="#">></a></div>
+                            <div class="list-body1">
+                                <a href="">移动电源</a>
+                                <a href="">耳机</a>
+                                <a href="">音箱</a>
+                                <a href="">自拍杆/支架</a>
+                                <a href="">充电器/线材</a>
+                                <a href="">U盘/存储卡</a>
+                                <a href="">排插</a>
+                                <a href="">摄像机/镜头</a>
+                                <a href="">智能硬件</a>
+                                <a href="">生活周边</a>
+                            </div>
+                            <div class="list-img1">
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/box.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为Watch</p>
+                                        <p>￥3599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为Watch</p>
+                                        <p>￥3599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为Watch</p>
+                                        <p>￥3599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为Watch</p>
+                                        <p>￥3599</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aside-li">
+                        <div class="aside-desc">
+                            <div class="aside-bg"></div>
+                            <h3 class="aside-h">专属配件</h3>
+                            <p class="aside-p"><span>保护壳</span><span>保护套</span><span>贴膜</span></p>
+                        </div>
+                        <div class="list" id="item-list6" style="display: none">
+                            <div class="list-head1"><span>浏览专属配件频道</span><a href="#">></a></div>
+                            <div class="list-body1">
+                                <a href="">保护壳</a>
+                                <a href="">保护套</a>
+                                <a href="">贴膜</a>
+                                <a href="">盒子专属配件</a>
+                                <a href="">表带</a>
+                            </div>
+                            <div class="list-img1">
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/box.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为VR</p>
+                                        <p>￥599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为VR</p>
+                                        <p>￥599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为VR</p>
+                                        <p>￥599</p>
+                                    </dd>
+                                </dl>
+                                <dl class="list-img-dl">
+                                    <dt><a href="#"><img src="images/wifi.png" /><span></span></a></dt>
+                                    <dd>
+                                        <p>华为VR</p>
+                                        <p>￥599</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            </div>
+            </div>
+            <!--轮播图-->
+            <ul class="slider" id="list-banner" style="top: -450px">
+                <li class="banner-li"><a href="#"><img src="images/bg6.jpg" alt=""></a></li>
+                <li class="banner-li"><a href="#"><img src="images/bg1.jpg" alt=""></a></li>
+                <li class="banner-li"><a href="#"><img src="images/bg2.jpg" alt=""></a></li>
+                <li class="banner-li"><a href="#"><img src="images/bg3.jpg" alt=""></a></li>
+                <li class="banner-li"><a href="#"><img src="images/bg4.jpg" alt=""></a></li>
+                <li class="banner-li"><a href="#"><img src="images/bg5.jpg" alt=""></a></li>
+                <li class="banner-li"><a href="#"><img src="images/bg6.jpg" alt=""></a></li>
+                <li class="banner-li"><a href="#"><img src="images/bg1.jpg" alt=""></a></li>
+            </ul>
+            <!--轮播图按钮-->
+            <div class="banner-select">
+                <span class="select current" index="1" ></span>
+                <span class="select" index="2"></span>
+                <span class="select" index="3"></span>
+                <span class="select" index="4"></span>
+                <span class="select" index="5"></span>
+                <span class="select" index="6"></span>
+            </div>
+        </div>
+
+        <div class="index-body">
+            <section class="section01">
+                <div class="sec01-login">
+                    <dl class="clearfix">
+                        <dt><a href="#"><img src="images/ren.png" /></a></dt>
+                        <dd>
+                            <p class="sec01-text">欢迎来到华为商城，请<a href="#">登陆</a></p>
+                            <p class="sec01-text">还没账号？<a href="#">注册</a>即可享受<span>&gt;</span></p>
+                            <div class="sec01-desc">新人福利</div>
+                            <div class="sec01-desc">特权频道</div>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="sec01-img clearfix">
+                    <dl>
+                        <dt class="sec01-img-size"><img src="images/logos_03.png" /></dt>
+                        <dd><a href="">1分钱试用</a></dd>
+                    </dl>
+                    <dl>
+                        <dt class="sec01-img-size"><img src="images/logos_05.png" /></dt>
+                        <dd><a href="">以旧换新</a></dd>
+                    </dl>
+                    <dl>
+                        <dt class="sec01-img-size"><img src="images/logos_08.png" /></dt>
+                        <dd><a href="">手机充值</a></dd>
+                    </dl>
+                    <dl>
+                        <dt class="sec01-img-size"><img src="images/logos_10.png" /></dt>
+                        <dd><a href="">开售提醒</a></dd>
+                    </dl>
+                    <dl>
+                        <dt class="sec01-img-size"><img src="images/logos_13.png" /></dt>
+                        <dd><a href="">智能家居</a></dd>
+                    </dl>
+                    <dl>
+                        <dt class="sec01-img-size"><img src="images/logos_16.png" /></dt>
+                        <dd><a href="">优选配件</a></dd>
+                    </dl>
+                </div>
+
+                <div class="sec01-notes">
+                    <div class="notes-list">
+                        <span>公告</span>
+                        <div class="notes-slider" id="notes-slider">
+                        <ul class="all-list" id="all-list" style="top: -48px">
+                            <li class="list-items"><a href="#">荣耀408狂欢</a></li>
+                            <li class="list-items"><a href="#">HUAWEI P10|P10 Plus新品首发 评价赢好礼</a></li>
+                            <li class="list-items"><a href="#">HUAWEI P10|P10 Plus震撼首发</a></li>
+                            <li class="list-items"><a href="#">优享购（荣耀V9）发货进展公告</a></li>
+                            <li class="list-items"><a href="#">以旧换新 荣耀狂欢节</a></li>
+                            <li class="list-items"><a href="#">荣耀408狂欢</a></li>
+                            <li class="list-items"><a href="#">HUAWEI P10|P10 Plus新品首发 评价赢好礼</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="all-notes clearfix">
+                        <dl>
+                            <dt><img src="images/money_03.png"></dt>
+                            <dd><a href="#">实名认证</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><img src="images/money_05.png"></dt>
+                            <dd><a href="#">芝麻信用</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><img src="images/money_07.png"></dt>
+                            <dd><a href="#">优购码</a></dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+</body>
+</html>
