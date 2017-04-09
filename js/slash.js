@@ -163,7 +163,7 @@ $(document).ready( function () {
             {
                 notes_list.style.top = -48 + 'px';
             }
-        };
+        }; //不加延时
 
     var timeSlider = function (offset) {
         var speed = offset/(note_time/note_interval);
@@ -182,7 +182,7 @@ $(document).ready( function () {
                 notes_list.style.top = -48 + 'px';
             }
         }
-    };
+    }; //加延时
     //JQuery
     /*var querySlider = function (offset) {
 
@@ -204,10 +204,10 @@ $(document).ready( function () {
     };
 
     autoPlay();*/
+    /***************************公告轮播****************************/
+
 
     /**********************侧边栏+轮播图***************************/
-
-
     function slash(offset) {
 
         var speed = offset/(time/interval);
@@ -320,5 +320,94 @@ $(document).ready( function () {
     };
 
     /**********************侧边栏+轮播图***************************/
+
+    /**********************中间无缝轮播***************************/
+    var winSlider = document.getElementById('sec04-ul');
+    var rightBtn = document.getElementById('right-btn');
+    var leftBtn = document.getElementById('left-btn');
+    var winTimer = null;
+
+    var slowSlider = function (offset, speed) {
+        var target = winSlider.offsetLeft + offset;
+        winTimer = setInterval(function () {
+            var newLeft = winSlider.offsetLeft + speed;
+            if ((speed < 0 && newLeft > target) || (speed > 0 && newLeft < target)) {
+                winSlider.style.left = newLeft + 'px';
+            }
+            else {
+                winSlider.style.left = target + 'px';
+                clearInterval(winTimer);
+                return;
+            }
+
+        }, 10);
+    };
+
+    rightBtn.onmouseover = function () {
+        var _self = this;
+        var _left = winSlider.offsetLeft;
+
+        if (_left <= -760) {
+            removeClass(_self, 'allowed');
+            addClass(_self, 'forbidden');
+            return;
+        }
+        else {
+            removeClass(_self, 'forbidden');
+            addClass(_self, 'allowed');
+
+        }
+    };
+
+    rightBtn.onclick = function () {
+        var _self = this;
+        var _left = winSlider.offsetLeft;
+        var speed = -20;
+        var offset = -760;
+        console.log(_left);
+        if (_left <= -760) {
+            removeClass(_self, 'allowed');
+            addClass(_self, 'forbidden');
+            return;
+        }
+        else {
+            slowSlider(offset, speed);
+            removeClass(_self, 'forbidden');
+            addClass(_self, 'allowed');
+        }
+    };
+
+    leftBtn.onmouseover = function () {
+        var _self = this;
+        var _left = winSlider.offsetLeft;
+        if (_left >= -5) {
+            removeClass(_self, 'allowed');
+            addClass(_self, 'forbidden');
+            return;
+        }
+        else {
+            removeClass(_self, 'forbidden');
+            addClass(_self, 'allowed');
+        }
+    };
+
+    leftBtn.onclick = function () {
+        var _self = this;
+        var _left = winSlider.offsetLeft;
+        var speed = 20;
+        var offset = 760;
+        console.log(_left);
+        if (_left >= 0) {
+            removeClass(_self, 'allowed');
+            addClass(_self, 'forbidden');
+            return;
+        }
+        else {
+            slowSlider(offset, speed);
+            removeClass(_self, 'forbidden');
+            addClass(_self, 'allowed');
+        }
+    }
+
 
 });
