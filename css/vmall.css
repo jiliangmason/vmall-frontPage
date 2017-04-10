@@ -46,6 +46,7 @@ h3 {
     width: 100%;
     height: 31px;
     border-bottom: 1px solid #eaeaea;
+    background: #fafafa;
 }
 
 .options-ul1 {
@@ -223,6 +224,7 @@ h3 {
     width: 100%;
     height: 69px;
     border-bottom: 1px solid #eaeaea;
+    background: #fafafa;
 }
 
 .logo-head {
@@ -414,7 +416,6 @@ i[index^="item"] {
     padding-top: 14px;
     padding-bottom: 8px;
     margin-right: 50px;
-    position: relative;
 }
 
 .all-items-list span {
@@ -638,6 +639,7 @@ i[index^="item"] {
     position: absolute;
     bottom: 27px;
     left: 50%;
+    z-index: 10;
 }
 
 .banner-select span {
@@ -653,6 +655,17 @@ i[index^="item"] {
 
 .banner-select .current {
     background: #fff;
+}
+
+.banner-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #3a3a3a;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 100%;
+    height: 450px;
 }
 
 

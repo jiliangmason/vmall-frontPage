@@ -1,12 +1,12 @@
 /**
  * Created by Administrator on 2017/3/30 0030.
  */
-$(document).ready( function () {
+window.onload = function () {
     var aside = document.getElementsByClassName('aside-li');
     var banner = document.getElementsByClassName('select');
     var olist = document.getElementById('list-banner');
     var container = document.getElementById('container');
-    var oli = document.getElementsByClassName('banner-li');
+    //var oli = document.getElementsByClassName('banner-li');
     var op_li = document.getElementById('option-li');
     var out_li = document.getElementById('option-li-list');
     var op_li_sec = document.getElementsByClassName('options-li2');
@@ -50,10 +50,6 @@ $(document).ready( function () {
     var no_bk = document.getElementById('no-bk');
     var options_menu1 = document.getElementsByClassName('options-ul2-menu1')[0];
     var options_menu2 = document.getElementsByClassName('options-ul2-menu2')[0];
-    //var options_li21 = document.getElementById('options-li21');
-    //var options_li22 = document.getElementById('options-li22');
-    //var arrow1 = options_li21.getElementsByTagName('span')[0];
-    //var arrow2 = options_li22.getElementsByTagName('span')[0];
 
     for (var i = 0; i < op_li_sec.length; i++)
     {
@@ -134,80 +130,59 @@ $(document).ready( function () {
 
     /***************************公告轮播****************************/
     var timer_s;
+    var timer_n;
     var notes = document.getElementById('notes-slider');
     var notes_list = document.getElementById('all-list');
-    var note_time = 600;
-    var note_interval = 300;
+    var note_time = 1500;
 
     notes.onmouseover = function () {
         clearInterval(timer_s);
     };
 
     timer_s = setInterval(function () {
-        timeSlider(-48);
-        }, 1000);
+        if (notes_list.offsetTop <= -288) {
+            notes_list.style.top = -48 + 'px';
+        }  //注意该控制语句的位置
+        noteFunc(-48);
+        }, note_time);
 
     notes.onmouseout = function () {
         timer_s = setInterval(function () {
-        timeSlider(-48);
-        }, 1000);
+         if (notes_list.offsetTop <= -288) {
+             notes_list.style.top = -48 + 'px';
+         }
+        noteFunc(-48);
+        }, note_time);
     };
     //JS
 
-    var noteSlider = function (offset) {
+    var noteFunc = function (offset) {
+        var interval_n = 80;
+        var speed = offset/Math.floor(note_time/interval_n);
+        var target = notes_list.offsetTop + offset;
+        clearInterval(timer_n);
 
-        var target = parseInt(notes_list.style.top) + offset;
-            notes_list.style.top = target + 'px';
+        timer_n = setInterval(function () {
 
-        if (parseInt(notes_list.style.top) == -240)
-            {
-                notes_list.style.top = -48 + 'px';
+            var currentPos = notes_list.offsetTop;
+            if (speed < 0 && currentPos <= target) {
+                clearInterval(timer_n);
+                console.log(currentPos);
+
             }
-        }; //不加延时
-
-    var timeSlider = function (offset) {
-        var speed = offset/(note_time/note_interval);
-        var target = parseInt(notes_list.style.top) + offset;
-
-        if (speed < 0 && parseInt(notes_list.style.top) + speed > target)
-        {
-            notes_list.style.top = parseInt(notes_list.style.top) + speed + 'px';
-            setTimeout(timeSlider, note_interval);
-        }
-        else {
-            notes_list.style.top = target + 'px';
-
-            if (parseInt(notes_list.style.top) < -264) //264 = 240 + 24(到下一行字的距离)
-            {
-                notes_list.style.top = -48 + 'px';
+            else {
+                notes_list.style.top = currentPos + speed + 'px';
             }
-        }
-    }; //加延时
-    //JQuery
-    /*var querySlider = function (offset) {
-
-        var target = parseInt(notes_list.css('top')) + offset;
-        offset = '-=' + Math.abs(offset);
-
-        notes_list.animate({'top': offset}, 200, function () {
-            if (target < -240) {
-                notes_list.css('top', -48);
-            }
-        })
-    };
-
-    var autoPlay = function () {
-        timer_s = setTimeout(function () {
-            querySlider(-48);
-            autoPlay();
-        }, 3000);
-    };
-
-    autoPlay();*/
+        }, interval_n);
+    }; //延时2
     /***************************公告轮播****************************/
 
 
     /**********************侧边栏+轮播图***************************/
+    var banner_mask = document.getElementById('banner-mask');
+    var fadeinFlag = false; //可以切换图片
+    var bannerFade = null;
+
     function slash(offset) {
 
         var speed = offset/(time/interval);
@@ -227,7 +202,7 @@ $(document).ready( function () {
                     olist.style.top = -2700 + 'px';
                 }
 
-                if (parseInt(olist.style.top) < -2700)
+                if (parseInt(olist.style.top) < -3150)
                 {
                     olist.style.top = -450 + 'px';
                 }
@@ -255,6 +230,7 @@ $(document).ready( function () {
             olist.style.top = distance + 'px';
         }
 
+        fadeIn(800, banner_mask);
         showSpan();
         //return distance;
     }
@@ -278,6 +254,31 @@ $(document).ready( function () {
         showSpan();
     }
 
+    var fadeIn = function (dur, obj) {
+
+        var bgInterval = 100;
+        var speed = bgInterval / dur;
+
+        obj.style.display = 'block';
+        obj.style.opacity = '1';
+        clearInterval(bannerFade);
+        fadeinFlag = true; //禁止切换图片
+
+        bannerFade = setInterval(function () {
+            var curOpacity = parseInt(obj.style.opacity);
+            if (curOpacity <= 0) {
+                clearInterval(bannerFade);
+                obj.style.display = 'none';
+                fadeinFlag = false;
+            }
+            else {
+                obj.style.opacity = curOpacity - speed;
+            }
+
+        }, bgInterval);
+
+    };
+
     for (var i = 0; i < aside.length; i++)
     {
         var id;
@@ -300,14 +301,21 @@ $(document).ready( function () {
     for (var j = 0; j < banner.length; j++)
     {
         banner[j].onmouseover = function () {
+            if (fadeinFlag) {
+                return;
+            }
             var myIndex = this.getAttribute('index');
             var offset = -450*(myIndex - index);
-            slash(offset);
+            animate(offset);
             index = myIndex;
             showSpan();
         };
 
     }
+
+    timer = setInterval(function () {
+        turnSlide();
+    }, 3000);
 
     container.onmouseout = function () {
         timer = setInterval(function () {
@@ -407,7 +415,89 @@ $(document).ready( function () {
             removeClass(_self, 'forbidden');
             addClass(_self, 'allowed');
         }
-    }
+    };
+
+    /**********************中间无缝轮播***************************/
+
+    /**********************淡入淡出轮播***************************/
+    (function () {
+        var fadeSlider = document.getElementById('sec05-ul');
+        var fadeBtns = document.getElementById('sec05-btn').getElementsByTagName('span');
+        var fadeBg = document.getElementById('sec05-bg');
+        var nowBtn = 0;
+        var fadeTimer = null;
+        var fadeinFlag = false; //可以切换图片
+
+        var showBtn = function (obj) {
+            if (obj === null)
+                return;
+            for (var i = 0; i < obj.length; i++) {
+                var _btn = obj[i];
+                removeClass(_btn, 'current-btn');
+            }
+
+            addClass(obj[nowBtn - 1], 'current-btn');
+        };
+
+        var imgSlide = function (offset) {
+            var distance = fadeSlider.offsetTop + offset;
+            fadeSlider.style.top = distance + 'px';
+
+            if (distance > -120) {
+                distance = -480;
+                fadeSlider.style.top = distance + 'px';
+            }
+
+            if (distance < -600) {
+                distance = -120;
+                fadeSlider.style.top = distance + 'px';
+            }
+
+            fadeIn(800, fadeBg);
+
+        };
+
+        var fadeIn = function (dur, obj) {
+
+            var bgInterval = 100;
+            var speed = bgInterval / dur;
+
+            obj.style.display = 'block';
+            obj.style.opacity = '1';
+            clearInterval(fadeTimer);
+            fadeinFlag = true; //禁止切换图片
+
+            fadeTimer = setInterval(function () {
+                var curOpacity = parseInt(obj.style.opacity);
+                if (curOpacity <= 0) {
+                    clearInterval(fadeTimer);
+                    obj.style.display = 'none';
+                    fadeinFlag = false;
+                }
+                else {
+                    obj.style.opacity = curOpacity - speed;
+                }
+
+            }, bgInterval);
+
+        };
+
+        for (var i = 0; i < fadeBtns.length; i++) {
+            var _btns = fadeBtns[i];
+            _btns.onmouseover = function () {
+                if (fadeinFlag) {
+                    return;
+                }
+                var nowIndex = this.getAttribute('index');
+                var offset = -120 * (nowIndex - nowBtn);
+                imgSlide(offset);
+                nowBtn = nowIndex;
+                showBtn(fadeBtns);
+            }
+        }
+    })();
+
+    /**********************淡入淡出轮播***************************/
 
 
-});
+};
