@@ -15,6 +15,7 @@ window.onload = function () {
     var timer = null;
     var interval = 10;
     var time = 600;
+    var isOnClick = false; //图片切换时不允许点击
 
     var $ = function (id) {
         return document.getElementById(id);
@@ -183,37 +184,6 @@ window.onload = function () {
     var fadeinFlag = false; //可以切换图片
     var bannerFade = null;
 
-    function slash(offset) {
-
-        var speed = offset/(time/interval);
-        var target = parseInt(olist.style.top) + offset;
-
-        var go = function () {
-            if ((speed > 0 && parseInt(olist.style.top) < target) || (speed < 0 && parseInt(olist.style.top) > target))
-            {
-                olist.style.top = parseInt(olist.style.top) + speed + 'px';
-                setTimeout(go(offset), interval);
-            }
-            else  {
-                olist.style.top = target + 'px';
-
-                if (parseInt(olist.style.top) > -450)
-                {
-                    olist.style.top = -2700 + 'px';
-                }
-
-                if (parseInt(olist.style.top) < -3150)
-                {
-                    olist.style.top = -450 + 'px';
-                }
-                return;
-            }
-        };
-
-        go();
-    }
-
-
     function animate(offset) {
         var distance = parseInt(olist.style.top) + offset;
         olist.style.top = distance + 'px';
@@ -330,102 +300,116 @@ window.onload = function () {
     /**********************侧边栏+轮播图***************************/
 
     /**********************中间无缝轮播***************************/
-    var winSlider = document.getElementById('sec04-ul');
-    var rightBtn = document.getElementById('right-btn');
-    var leftBtn = document.getElementById('left-btn');
+    var winSlider = document.getElementsByClassName('sec04-ul');
+    var rightBtn = document.getElementsByClassName('right-btn');
+    var leftBtn = document.getElementsByClassName('left-btn');
     var winTimer = null;
+    var wholeTimer = null;
 
-    var slowSlider = function (offset, speed) {
-        var target = winSlider.offsetLeft + offset;
+    var slowSlider = function (offset, speed, obj) {
+        if (obj === null)
+        {
+            return;
+        }
+
+        isOnClick = true;
+        var target = obj.offsetLeft + offset;
         winTimer = setInterval(function () {
-            var newLeft = winSlider.offsetLeft + speed;
+            var newLeft = obj.offsetLeft + speed;
             if ((speed < 0 && newLeft > target) || (speed > 0 && newLeft < target)) {
-                winSlider.style.left = newLeft + 'px';
+                obj.style.left = newLeft + 'px';
             }
             else {
-                winSlider.style.left = target + 'px';
+                obj.style.left = target + 'px';
                 clearInterval(winTimer);
+                isOnClick = false;
                 return;
             }
 
         }, 10);
     };
 
-    rightBtn.onmouseover = function () {
-        var _self = this;
-        var _left = winSlider.offsetLeft;
+    for (var i = 0; i < winSlider.length; i++)
+    {
+        (function (args) {
+            rightBtn[args].onclick = function () {
+                var _self = this;
+                var _left = winSlider[args].offsetLeft;
+                var speed = -20;
+                var offset = -760;
+                console.log(_left);
+                if (_left <= -760) {
+                    removeClass(_self, 'allowed');
+                    addClass(_self, 'forbidden');
+                    return;
+                }
+                else {
+                    slowSlider(offset, speed, winSlider[args]);
+                    removeClass(_self, 'forbidden');
+                    addClass(_self, 'allowed');
+                }
+            };
 
-        if (_left <= -760) {
-            removeClass(_self, 'allowed');
-            addClass(_self, 'forbidden');
-            return;
-        }
-        else {
-            removeClass(_self, 'forbidden');
-            addClass(_self, 'allowed');
+            rightBtn[args].onmouseover = function () {
+                var _self = this;
+                var _left = winSlider[args].offsetLeft;
 
-        }
-    };
+                if (_left <= -760) {
+                    removeClass(_self, 'allowed');
+                    addClass(_self, 'forbidden');
+                    return;
+                }
+                else {
+                    removeClass(_self, 'forbidden');
+                    addClass(_self, 'allowed');
+                }
+            };
 
-    rightBtn.onclick = function () {
-        var _self = this;
-        var _left = winSlider.offsetLeft;
-        var speed = -20;
-        var offset = -760;
-        console.log(_left);
-        if (_left <= -760) {
-            removeClass(_self, 'allowed');
-            addClass(_self, 'forbidden');
-            return;
-        }
-        else {
-            slowSlider(offset, speed);
-            removeClass(_self, 'forbidden');
-            addClass(_self, 'allowed');
-        }
-    };
+            leftBtn[args].onmouseover = function () {
+                var _self = this;
+                var _left = winSlider[args].offsetLeft;
+                if (_left >= -5) {
+                    removeClass(_self, 'allowed');
+                    addClass(_self, 'forbidden');
+                    return;
+                }
+                else {
+                    removeClass(_self, 'forbidden');
+                    addClass(_self, 'allowed');
+                }
+            };
 
-    leftBtn.onmouseover = function () {
-        var _self = this;
-        var _left = winSlider.offsetLeft;
-        if (_left >= -5) {
-            removeClass(_self, 'allowed');
-            addClass(_self, 'forbidden');
-            return;
-        }
-        else {
-            removeClass(_self, 'forbidden');
-            addClass(_self, 'allowed');
-        }
-    };
+            leftBtn[args].onclick = function () {
+                var _self = this;
+                var _left = winSlider[args].offsetLeft;
+                var speed = 20;
+                var offset = 760;
+                console.log(_left);
+                if (_left >= 0) {
+                    removeClass(_self, 'allowed');
+                    addClass(_self, 'forbidden');
+                    return;
+                }
+                else {
+                    slowSlider(offset, speed, winSlider[args]);
+                    removeClass(_self, 'forbidden');
+                    addClass(_self, 'allowed');
+                }
+            };
 
-    leftBtn.onclick = function () {
-        var _self = this;
-        var _left = winSlider.offsetLeft;
-        var speed = 20;
-        var offset = 760;
-        console.log(_left);
-        if (_left >= 0) {
-            removeClass(_self, 'allowed');
-            addClass(_self, 'forbidden');
-            return;
-        }
-        else {
-            slowSlider(offset, speed);
-            removeClass(_self, 'forbidden');
-            addClass(_self, 'allowed');
-        }
-    };
+        })(i);
+    }
 
     /**********************中间无缝轮播***************************/
 
     /**********************淡入淡出轮播***************************/
     (function () {
-        var fadeSlider = document.getElementById('sec05-ul');
-        var fadeBtns = document.getElementById('sec05-btn').getElementsByTagName('span');
-        var fadeBg = document.getElementById('sec05-bg');
-        var nowBtn = 0;
-        var fadeTimer = null;
+        var fadeWindow = document.getElementsByClassName('sec05-img-area');
+        var fadeSlider = document.getElementsByClassName('sec05-ul');
+        //var fadeBtns = document.getElementById('sec05-btn').getElementsByTagName('span');
+        var fadeBg = document.getElementsByClassName('sec05-bg');
+        var fadeBtns = document.getElementsByClassName('sec05-btn');
+        var nowBtn = 1;
         var fadeinFlag = false; //可以切换图片
 
         var showBtn = function (obj) {
@@ -439,21 +423,21 @@ window.onload = function () {
             addClass(obj[nowBtn - 1], 'current-btn');
         };
 
-        var imgSlide = function (offset) {
-            var distance = fadeSlider.offsetTop + offset;
-            fadeSlider.style.top = distance + 'px';
+        var imgSlide = function (offset, obj, bg) {
+            var distance = obj.offsetTop + offset;
+            obj.style.top = distance + 'px';
 
             if (distance > -120) {
                 distance = -480;
-                fadeSlider.style.top = distance + 'px';
+                obj.style.top = distance + 'px';
             }
 
             if (distance < -600) {
                 distance = -120;
-                fadeSlider.style.top = distance + 'px';
+                obj.style.top = distance + 'px';
             }
 
-            fadeIn(800, fadeBg);
+            fadeIn(800, bg);
 
         };
 
@@ -461,6 +445,7 @@ window.onload = function () {
 
             var bgInterval = 100;
             var speed = bgInterval / dur;
+            var fadeTimer = null;  //这个timer不可以写到全局
 
             obj.style.display = 'block';
             obj.style.opacity = '1';
@@ -482,22 +467,153 @@ window.onload = function () {
 
         };
 
-        for (var i = 0; i < fadeBtns.length; i++) {
-            var _btns = fadeBtns[i];
-            _btns.onmouseover = function () {
-                if (fadeinFlag) {
-                    return;
-                }
-                var nowIndex = this.getAttribute('index');
-                var offset = -120 * (nowIndex - nowBtn);
-                imgSlide(offset);
-                nowBtn = nowIndex;
-                showBtn(fadeBtns);
+        var autoPlay = function () {
+            nowBtn++;
+            if (nowBtn > 4) {
+                nowBtn = 1;
             }
+            for (i = 0; i < fadeSlider.length; i++)
+            {
+                (function (args) {
+                    var _fadeAutoUl = fadeSlider[i];
+                    var _fadeAutoBg = fadeBg[i];
+                    var _fadeBtnChilds = fadeBtns[args].getElementsByTagName('span');
+
+                    imgSlide(-120, _fadeAutoUl, _fadeAutoBg);
+                    showBtn(_fadeBtnChilds);
+                })(i);
+            }
+        };
+
+
+        for (var j = 0; j < fadeSlider.length; j++) {
+
+           (function (args) {
+               var _fadeUl = fadeSlider[j];
+               var _fadeBg = fadeBg[j];
+               var fadeBtnChilds = fadeBtns[args].getElementsByTagName('span');
+
+               for (var i = 0; i < fadeBtnChilds.length; i++) {
+                   var _btns = fadeBtnChilds[i];
+                   _btns.onmouseover = function () {
+                        if (fadeinFlag) {
+                            return;
+                        }
+                        var nowIndex = this.getAttribute('index');
+                        var offset = -120 * (nowIndex - nowBtn);
+                        imgSlide(offset, _fadeUl, _fadeBg);
+                        nowBtn = nowIndex;
+                        showBtn(fadeBtnChilds);
+                     }
+                 }
+             })(j);
+         }
+
+
+        for (var k = 0; k < fadeSlider.length; k++) {
+            (function (args) {
+                var _autoBtnChilds = fadeBtns[args].getElementsByTagName('span');
+                var _autoWindow = fadeWindow[args];
+                showBtn(_autoBtnChilds);
+                _autoWindow.onmouseover = function () {
+                    clearInterval(wholeTimer);
+                };
+
+                _autoWindow.onmouseout = function () {
+                    wholeTimer = setInterval(function () {
+                        autoPlay();
+                    }, 3000);
+                }
+            })(k);
         }
+
+        wholeTimer = setInterval(function () {
+            autoPlay();
+        }, 3000);
+
     })();
 
     /**********************淡入淡出轮播***************************/
 
+    /**********************友情链接***************************/
+    (function () {
+        var linksList = document.getElementById('links-slider');
+        var linksLeftBtn = document.getElementById('links-front');
+        var linksRightBtn = document.getElementById('links-back');
+
+        linksRightBtn.onclick = function () {
+            var _self = this;
+            var _left = linksList.offsetLeft;
+            var speed = -5;
+            var offset = -100;
+
+            if (isOnClick) {
+                return;
+            }
+
+            if (_left <= -700) {
+                removeClass(_self, 'allowed');
+                addClass(_self, 'forbidden');
+                return;
+            }
+            else {
+                removeClass(_self, 'forbidden');
+                addClass(_self, 'allowed');
+                slowSlider(offset, speed, linksList);
+            }
+        };
+
+        linksRightBtn.onmouseover = function () {
+            var _self = this;
+            var _left = linksList.offsetLeft;
+
+            if (_left <= -700) {
+                removeClass(_self, 'allowed');
+                addClass(_self, 'forbidden');
+                return;
+            }
+            else {
+                removeClass(_self, 'forbidden');
+                addClass(_self, 'allowed');
+            }
+        };
+
+        linksLeftBtn.onclick = function () {
+            var _self = this;
+            var _left = linksList.offsetLeft;
+            var speed = 5;
+            var offset = 100;
+
+            if (isOnClick) {
+                return;
+            }
+
+            if (_left >= 0) {
+                removeClass(_self, 'allowed');
+                addClass(_self, 'forbidden');
+                return;
+            }
+            else {
+                removeClass(_self, 'forbidden');
+                addClass(_self, 'allowed');
+                slowSlider(offset, speed, linksList);
+            }
+        };
+
+        linksLeftBtn.onmouseover = function () {
+            var _self = this;
+            var _left = linksList.offsetLeft;
+            if (_left >= 0) {
+                removeClass(_self, 'allowed');
+                addClass(_self, 'forbidden');
+                return;
+            }
+            else {
+                removeClass(_self, 'forbidden');
+                addClass(_self, 'allowed');
+            }
+        };
+
+    })();
 
 };

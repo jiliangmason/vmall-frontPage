@@ -6,6 +6,7 @@ h3 {
 .index-body {
     width: 100%;
     background: #f5f5f5;
+    padding-bottom: 65px;
 }
 
 .index-content {
@@ -88,8 +89,11 @@ h3 {
 }
 
 .sec01-img dd {
-    color: #3a3a3a;
     text-align: center;
+}
+
+.sec01-img a {
+    color: #3a3a3a;
 }
 
 .sec01-img a:hover {
@@ -480,6 +484,9 @@ h3 {
 
 /*******************section06**********************/
 
+.section06 {
+    margin-bottom: 8px;
+}
 
 .title-head {
     float: left;
@@ -487,6 +494,7 @@ h3 {
     height: 65px;
     line-height: 65px;
     color: #3a3a3a;
+    padding-left: 1px;
 }
 
 .sec-title-options li {
@@ -590,3 +598,52 @@ h3 {
     height: 253px;
     width: 0;
 }
+
+/****************************section07**************************/
+
+.section07 {
+    margin-bottom: 8px;
+}
+
+/***********************section08*****************************/
+
+.section08 {
+    margin-bottom: 10px;
+}
+
+/************************section09********************************/
+
+.section09 {
+    margin-bottom: 26px;
+}
+
+.item-dl-sp {
+    float: left;
+    margin-right: 12px;
+    position: relative;
+    transition: top 1s ease-in-out, box-shadow .2s ease-in-out, left 1s ease-in-out;
+}
+
+.item-dl-sp dt {
+    width: 594px;
+}
+
+.item-dl-sp:hover {
+    top: -2px;
+    left: 1px;
+    box-shadow: 0 10px 20px #dedede;
+}
+
+/**************************section10********************************/
+
+.section10 {
+    margin-bottom: 26px;
+}
+
+/**************************section11****************************/
+
+.section11 {
+    margin-bottom: 35px;
+}
+
+/***************************section12**********************************/
